@@ -1,7 +1,7 @@
 var Key = React.createClass({
 
   getInitialState: function(){
-    return {playing: false}
+    return {playing: false};
   },
 
   componentDidMount: function(){
@@ -9,9 +9,9 @@ var Key = React.createClass({
   },
 
   render: function() {
-    var divStyle = {backgroundColor: (this.state.playing?'yellow':'white')};
+    var pressClass = (this.state.playing ? 'pressed' : 'unpressed');
 
-    return <li style={divStyle}> {KeyLetters[this.props.keyCode]} {this.props.note.frequency}</li>
+    return <li className={pressClass}>{KeyLetters[this.props.keyCode]}:<br/>{this.props.note.frequency}<br/>Hz</li>
   },
 
   checkPlaying: function(){

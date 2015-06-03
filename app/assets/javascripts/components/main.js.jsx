@@ -4,7 +4,6 @@ var Main = React.createClass({
     return (
       <div id="main">
       <Organ/>
-      <TrackViewer/>
       </div>
     );
   }

@@ -16,14 +16,79 @@
 
 
 #organ{
-  width:400px;
+  padding: 10px;
   display: inline-block;
   vertical-align: top;
+  background-color: #333;
+  border-radius:10px;
+  box-shadow:0 -1px 10px 0px #999 inset
+}
+
+.menu{
+  margin-left: 30px;
+  width:280px;
+  padding:5px;
+  display: default;
+  border-radius: 5px;
+  box-shadow: 0 0px 10px 0px #111 inset;
+}
+
+.bindFormInput{
+    width: 40px;
+}
+
+li{
+  padding: 0px;
+  margin: 5px;
+  height: 130px;
+  width: 45px;
+  text-align:center;
+  float: left;
+  /*outline-style: solid;
+  outline-width: 1px;
+  outline-color: black;*/
+  border-radius:5px;
+  /*box-shadow: 0 0 3pt 2pt red;*/
+}
+
+ul{
+  display: inline-block;
+  list-style-type: none;
+  padding: 10px;
+  padding-top: 0px;
+  border-radius: 10px;
+  box-shadow: 0 0px 20px 2px #111 inset;
+}
+
+.pressed{
+  background-color: #FDF;
+  box-shadow:0 -2px 2px 0px #111 inset, 0 5px 2px 0px #111 inset;
+/*0 -5px 10px 1px yellow inset, */
+}
+
+.unpressed{
+  background-color: #EEEEEE;
+  box-shadow: 0 -13px 2px 0px #666 inset, 0 5px 2px 0px #111 inset;
 }
 
 #track{
-  width:400px;
-  display: inline-block;
-  vertical-align: top;
-  margin: 30px;
+  float:left;
+  width: 120px;
+}
+
+#play{
+  outline: 0;
+  background-color:#EEE;
+  border-radius:5px;
+  border: none;
+  box-shadow: 0 0 2px 0px #333 inset;
+  box-shadow: 0 0 5px 1px #111 inset;
+}
+
+#record{
+  outline: 0;
+  background-color:#EEE;
+  border-radius:5px;
+  border: none;
+  box-shadow: 0 0 5px 1px #111 inset;
 }

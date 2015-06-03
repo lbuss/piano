@@ -13,8 +13,8 @@ var TrackViewer = React.createClass({
   render: function() {
     return (
       <div id="track">
-      <button onClick={this.playTrack}>Play</button>
-      <button onClick={this.toggleRecord}>{this.state.recording?'Stop':'Record'}</button>
+      <button id="play" onClick={this.playTrack}>Play</button>
+      <button id="record" onClick={this.toggleRecord}>{this.state.recording?' Stop ':'Record'}</button>
       </div>
     );
   },

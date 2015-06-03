@@ -10,12 +10,16 @@ var Organ = React.createClass({
   },
 
   render: function() {
-    var keyList = Object.keys(this.state.keysBound).map(function(key){
+    var sortByFreq  = function(a, b) {
+      return (this.state.keysBound[a] > this.state.keysBound[b]);
+    }.bind(this);
+
+    var keyList = Object.keys(this.state.keysBound).sort(sortByFreq).map(function(key){
       var note = new Note(this.state.keysBound[key]);
       return <Key key={key} keyCode={key} note={note}/>
-    }.bind(this))
+    }.bind(this));
 
-    return <div id="organ"><ul>{keyList}</ul><BindForm/></div>
+    return <div id="organ"><div className="menu"><TrackViewer/><BindForm/></div><ul>{keyList}</ul></div>
   },
 
   updateBoundKeys: function(){
