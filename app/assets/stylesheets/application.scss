@@ -14,14 +14,18 @@
  *= require_self
  */
 
+#main{
+  display: inline-block;
+}
 
 #organ{
   padding: 10px;
-  display: inline-block;
+  margin-right: 50px;
+  float: left;
   vertical-align: top;
   background-color: #333;
-  border-radius:10px;
-  box-shadow:0 -1px 10px 0px #999 inset
+  border-radius:5px;
+  box-shadow:0 -1px 10px 0px #999 inset, 10px 10px 10px 0px #999;
 }
 
 .menu{
@@ -37,7 +41,7 @@
     width: 40px;
 }
 
-li{
+.piano-key{
   padding: 0px;
   margin: 5px;
   height: 130px;
@@ -51,11 +55,11 @@ li{
   /*box-shadow: 0 0 3pt 2pt red;*/
 }
 
-ul{
+#key-board{
   display: inline-block;
+  margin-bottom: 10px;
   list-style-type: none;
-  padding: 10px;
-  padding-top: 0px;
+  padding: 0px 10px;
   border-radius: 10px;
   box-shadow: 0 0px 20px 2px #111 inset;
 }
@@ -91,4 +95,82 @@ ul{
   border-radius:5px;
   border: none;
   box-shadow: 0 0 5px 1px #111 inset;
+}
+
+#track-loader{
+  float: left;
+  height: 300px;
+  width: 190px;
+  background-color: #CCC;
+  box-shadow: -3px -8px 15px 5px #555 inset, 10px 10px 10px 0px #999;
+  border-radius: 15px;
+}
+
+#loader-screen-wrapper{
+  // pointer-events: none;
+  overflow: hidden;
+  width: 140px;
+  height: 100px;
+  margin: 0;
+  position: relative;
+  padding: 0;
+  top: 20px;
+  left: 25px;
+  border-radius: 3px;
+}
+
+#loader-screen-wrapper:before{
+  box-shadow: 0 0 5px 5 #111 inset;
+}
+
+#loader-screen{
+  position: relative;
+  top: -2px;
+  background-color: #999;
+  width: 100%;
+  height: 100%;
+  list-style-type: none;
+  text-align: left;
+  padding: 0;
+  margin: 0;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+#loader-circle-outer{
+  margin: 0;
+  width: 130px;
+  height: 130px;
+  position: relative;
+  top: 40px;
+  left: 30px;
+  border-radius: 65px;
+  box-shadow: 0 0 4px 2px #333 inset;
+}
+
+#loader-buttons{
+  position: relative;
+  top: 20px;
+  left: 20px;
+}
+
+.loader-menu-item{
+  cursor: pointer;
+  padding: 0 5px;
+}
+
+#loader-text-input{
+  position:relative;
+  top:-3px;
+  height: 18px;
+  background-color: #999;
+  // border-radius: 3px;
+  margin:0;
+  border:0;
+  padding:0;
+  width: 100%;
+}
+
+.selected{
+  background-color: #777;
 }

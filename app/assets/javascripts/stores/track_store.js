@@ -2,7 +2,11 @@
 
   var _currentTrack = new Track(KeyStore.keyBindings());
 
-  var CHANGE_EVENT = 'change';
+  var _trackList = [];
+
+  var TRACK_CHANGE_EVENT = 'track_change';
+  var LIST_CHANGE_EVENT = 'list_change';
+
   root.TrackStore = $.extend({}, EventEmitter.prototype, {
 
     currentTrack: function(){
@@ -10,31 +14,49 @@
     },
 
     keyDown: function(key){
-      // if(KeyStore.keyBindings[key]){
-        _currentTrack.keyDown(key);
-        TrackStore.emit(CHANGE_EVENT);
-      // }
+      _currentTrack.keyDown(key);
+      TrackStore.emit(TRACK_CHANGE_EVENT);
     },
 
     keyUp: function(key){
-      // if(KeyStore.keyBindings[key]){
-        _currentTrack.keyUp(key);
-        TrackStore.emit(CHANGE_EVENT);
-      // }
+      _currentTrack.keyUp(key);
+      TrackStore.emit(TRACK_CHANGE_EVENT);
     },
 
     newBind: function(bind){
       bind.freq = parseInt(bind.freq);
       _currentTrack.newBind(bind)
-      TrackStore.emit(CHANGE_EVENT);
+      TrackStore.emit(TRACK_CHANGE_EVENT);
     },
 
-    addChangeListener: function(callback){
-      this.on(CHANGE_EVENT, callback);
+    loadTrack: function(track){
+      _currentTrack = new Track({}, track);
+      TrackStore.emit(TRACK_CHANGE_EVENT);
     },
 
-    removeChangeListener: function(callback){
-      this.removeListener(CHANGE_EVENT, callback);
+    updateList: function(list){
+      _trackList = list;
+      TrackStore.emit(LIST_CHANGE_EVENT);
+    },
+
+    getList: function(){
+      return _trackList;
+    },
+
+    addTrackChangeListener: function(callback){
+      this.on(TRACK_CHANGE_EVENT, callback);
+    },
+
+    removeTrackChangeListener: function(callback){
+      this.removeListener(TRACK_CHANGE_EVENT, callback);
+    },
+
+    addListChangeListener: function(callback){
+      this.on(LIST_CHANGE_EVENT, callback);
+    },
+
+    removeListChangeListener: function(callback){
+      this.removeListener(LIST_CHANGE_EVENT, callback);
     },
 
     dispatchID: AppDispatcher.register(function(payload){
@@ -47,6 +69,12 @@
           break;
         case ActionTypes.NEW_BIND:
           TrackStore.newBind(payload.bind);
+          break;
+        case ActionTypes.LOAD_TRACK:
+          TrackStore.loadTrack(payload.track);
+          break;
+        case ActionTypes.LIST_UPDATE:
+          TrackStore.updateList(payload.track_list);
           break;
       }
     })

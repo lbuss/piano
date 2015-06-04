@@ -1,29 +1,35 @@
 (function(root){
-
-  _time = 0;
-  _interval = null;
-  _recording = false;
-  _playHash = {};
-  _stopHash = {};
-  _notes = {};
-
   root.Track = function(boundKeys, loadTrack){
+
+    this.attr = {
+      name: 'track01',
+      time: 0,
+      timeStep: 5,
+      interval: null,
+      recording: false,
+      playHash: {},
+      stopHash: {},
+      notes: {}
+    }
+
     if(loadTrack){
-      _playHash = loadTrack.playHash;
-      _stopHash = loadTrack.stopHash;
-      _notes = loadTrack.notes;
+      this.attr.playHash = loadTrack.play_hash;
+      this.attr.stopHash = loadTrack.stop_hash;
+      this.attr.notes = loadTrack.notes;
       this.name = loadTrack.name;
     }else{
       this.trackName = 'New Track';
       Object.keys(boundKeys).forEach(function(key){
-        _notes[key] = boundKeys[key];
-      })
+        this.attr.notes[key] = boundKeys[key];
+      }.bind(this));
     }
   }
 
   root.Track.prototype = {
     play: function(){
-      _interval = setInterval(this.step.bind(this), 5);
+      if(!this.attr.interval){
+        this.attr.interval = setInterval(this.step.bind(this), this.attr.timeStep);
+      }
     },
 
     stop: function(){
@@ -31,9 +37,9 @@
     },
 
     startRecording: function(){
-      _recording = true;
-      _time = 0;
-      _interval = setInterval(this.step.bind(this), 5);
+      this.reset();
+      this.attr.recording = true;
+      this.play();
     },
 
     stopRecording: function(){
@@ -41,52 +47,59 @@
     },
 
     keyDown: function(key){
-      if(_recording && _notes[key]){
-        if(_playHash[_time]){
-          _playHash[_time].push(key);
+      if(this.attr.recording && this.attr.notes[key]){
+        if(this.attr.playHash[this.attr.time]){
+          this.attr.playHash[this.attr.time].push(key);
         }else{
-          _playHash[_time] = [key];
+          this.attr.playHash[this.attr.time] = [key];
         }
       }
     },
 
     keyUp: function(key){
-      if(_recording && _notes[key]){
-        if(_stopHash[_time]){
-          _stopHash[_time].push(key);
+      if(this.attr.recording && this.attr.notes[key]){
+        if(this.attr.stopHash[this.attr.time]){
+          this.attr.stopHash[this.attr.time].push(key);
         }else{
-          _stopHash[_time] = [key];
+          this.attr.stopHash[this.attr.time] = [key];
         }
       }
     },
 
     newBind: function(bind){
-      _notes[KeyCodes[bind.key]] = new Note(bind.freq);
+      this.attr.notes[KeyCodes[bind.key]] = new Note(bind.freq);
     },
 
     reset: function(){
-      clearInterval(_interval);
-      _recording = false;
-      _time = 0;
+      clearInterval(this.attr.interval);
+      this.attr.interval = null;
+      this.attr.recording = false;
+      this.attr.time = 0;
     },
 
     step: function(){
-      _time += 5;
-      if(_playHash[_time]){
-        _playHash[_time].forEach(function(key){
+      //press and release keys using attrs playhash and stophash respectively
+      this.attr.time += this.attr.timeStep;
+      if(this.attr.playHash[this.attr.time]){
+        this.attr.playHash[this.attr.time].forEach(function(key){
           Actions.keyDown(key);
-          // _notes[key].start();
         })
       }
-      if(_stopHash[_time]){
-        _stopHash[_time].forEach(function(key){
+      if(this.attr.stopHash[this.attr.time]){
+        this.attr.stopHash[this.attr.time].forEach(function(key){
           Actions.keyUp(key);
-          // _notes[key].stop();
         })
+      }
+    },
+
+    saveAttrs: function(name){
+      // return the attributes required to save the song
+      return {
+        name: name,
+        play_hash: this.attr.playHash,
+        stop_hash: this.attr.stopHash,
+        notes: this.attr.notes
       }
     }
   }
-
-
-
 })(this)

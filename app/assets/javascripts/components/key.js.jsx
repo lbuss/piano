@@ -11,7 +11,7 @@ var Key = React.createClass({
   render: function() {
     var pressClass = (this.state.playing ? 'pressed' : 'unpressed');
 
-    return <li className={pressClass}>{KeyLetters[this.props.keyCode]}:<br/>{this.props.note.frequency}<br/>Hz</li>
+    return <li className={pressClass+" piano-key"}>{KeyLetters[this.props.keyCode]}:<br/>{this.props.note.frequency}<br/>Hz</li>
   },
 
   checkPlaying: function(){

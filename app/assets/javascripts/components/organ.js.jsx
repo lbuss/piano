@@ -19,7 +19,7 @@ var Organ = React.createClass({
       return <Key key={key} keyCode={key} note={note}/>
     }.bind(this));
 
-    return <div id="organ"><div className="menu"><TrackViewer/><BindForm/></div><ul>{keyList}</ul></div>
+    return <div id="organ"><div className="menu"><TrackViewer/><BindForm/></div><ul id="key-board">{keyList}</ul></div>
   },
 
   updateBoundKeys: function(){
