@@ -48,6 +48,11 @@
       KeyStore.emit(CHANGE_EVENT);
     },
 
+    newBinds(binds){
+      _keyBindings = binds;
+      KeyStore.emit(CHANGE_EVENT);
+    },
+
     addPlayListener: function(callback){
       this.on(PLAY_EVENT, callback);
     },
@@ -75,13 +80,10 @@
         case ActionTypes.NEW_BIND:
           KeyStore.newBind(payload.bind);
           break;
+        case ActionTypes.LOAD_TRACK:
+          KeyStore.newBinds(payload.track.notes)
+          break;
       }
     })
-
-
   })
-
-
-
-
 })(this);
