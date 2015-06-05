@@ -3,7 +3,7 @@ var BindForm = React.createClass({
 
   getInitialState: function(){
     return{
-      freq: 0,
+      freq: 1000,
       key: 'a'
     }
   },
@@ -12,7 +12,7 @@ var BindForm = React.createClass({
     return(
       <form onSubmit={this.submitBind}>
         <input type="text" className="bindFormInput" valueLink={this.linkState('freq')}/>
-        <input type="text" className="bindFormInput" valueLink={this.linkState('key')} name="lng"/>
+        <input type="text" className="bindFormInput" valueLink={this.linkState('key')}/>
         <input type="submit" value="Bind Key"/>
       </form>
     )
