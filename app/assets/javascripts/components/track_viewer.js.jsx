@@ -8,25 +8,14 @@ var TrackViewer = React.createClass({
   },
 
   componentDidMount: function(){
-    TrackStore.addTrackChangeListener(this.updateTrack);
+    TrackStore.addChangeListener(this.updateTrack);
   },
 
   render: function() {
     return (
       <div id="track">
-        // <button
-        //   id="play"
-        //   onClick={this.playTrack}>
-        //   Play
-        // </button>
-        // <button
-        //   id="record"
-        //   onClick={this.toggleRecord}>
-        //   {this.state.recording?' Stop ':'Record'}
-        // </button>
-
-      <button id="play" onClick={this.togglePlay}> {this.state.playing? 'Stop' : 'Play'} </button>
-      <button id="record" onClick={this.toggleRecord}> {this.state.recording? 'Stop' : 'Record'} </button>
+        <button id="play" onClick={this.togglePlay}> {this.state.playing? 'Stop' : 'Play'} </button>
+        <button id="record" onClick={this.toggleRecord}> {this.state.recording? 'Stop' : 'Record'} </button>
       </div>
     );
   },

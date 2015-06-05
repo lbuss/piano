@@ -12,10 +12,12 @@
     }
 
     if(loadTrack){
+      this.id = loadTrack.id;
       this.attr.playHash = loadTrack.play_hash;
       this.attr.stopHash = loadTrack.stop_hash;
       this.attr.notes = loadTrack.notes;
       this.name = loadTrack.name;
+
     }else{
       Object.keys(boundKeys).forEach(function(key){
         this.attr.notes[key] = boundKeys[key];

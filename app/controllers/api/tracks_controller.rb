@@ -5,15 +5,19 @@ class Api::TracksController < ApplicationController
   end
 
   def create
-    @track = Track.new(track_params)
-    @track[:play_hash] = params[:track][:play_hash]
-    @track[:stop_hash] = params[:track][:stop_hash]
-    @track[:notes] = params[:track][:notes]
-    if @track.save!
-      @track_list = Track.all
-      render json: @track_list
+    if !params[:track][:play_hash]
+      render json: {errors: "no play hash", status: 400}, status: 400
     else
-      render json: {errors: @track.errors.full_messages}
+      @track = Track.new(track_params)
+      @track[:play_hash] = params[:track][:play_hash]
+      @track[:stop_hash] = params[:track][:stop_hash]
+      @track[:notes] = params[:track][:notes]
+      if @track.save!
+        @track_list = Track.all
+        render json: @track_list
+      else
+        render json: {errors: @track.errors.full_messages}
+      end
     end
   end
 

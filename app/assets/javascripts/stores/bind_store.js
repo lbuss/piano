@@ -1,7 +1,5 @@
 (function(root){
-  var _keysPressed= {};
 
-  var PLAY_EVENT = 'play';
   var CHANGE_EVENT = 'change';
 
     // 'C3': 130.81,
@@ -20,45 +18,19 @@
     _keyBindings[KeyCodes['y']] = Tones['B3'];
 
 
-  root.KeyStore = $.extend({}, EventEmitter.prototype, {
+  root.BindStore = $.extend({}, EventEmitter.prototype, {
     keyBindings: function(){
       return _keyBindings;
     },
 
-    keysPressed: function(){
-      return _keysPressed;
-    },
-
-    checkPlaying(key){
-      return !!_keysPressed[key];
-    },
-
-    keyPlay: function(key){
-      _keysPressed[key] = true;
-      KeyStore.emit(PLAY_EVENT);
-    },
-
-    keyStop: function(key){
-      _keysPressed[key] = false;
-      KeyStore.emit(PLAY_EVENT);
-    },
-
     newBind: function(bind){
       _keyBindings[KeyCodes[bind.key]] = parseInt(bind.freq);
-      KeyStore.emit(CHANGE_EVENT);
+      BindStore.emit(CHANGE_EVENT);
     },
 
     newBinds(binds){
       _keyBindings = binds;
-      KeyStore.emit(CHANGE_EVENT);
-    },
-
-    addPlayListener: function(callback){
-      this.on(PLAY_EVENT, callback);
-    },
-
-    removePlayListener: function(callback){
-      this.removeListener(PLAY_EVENT, callback);
+      BindStore.emit(CHANGE_EVENT);
     },
 
     addChangeListener: function(callback){
@@ -71,17 +43,11 @@
 
     dispatchID: AppDispatcher.register(function(payload){
       switch(payload.actionType){
-        case ActionTypes.KEY_DOWN:
-          KeyStore.keyPlay(payload.key);
-          break;
-        case ActionTypes.KEY_UP:
-          KeyStore.keyStop(payload.key);
-          break;
         case ActionTypes.NEW_BIND:
-          KeyStore.newBind(payload.bind);
+          BindStore.newBind(payload.bind);
           break;
         case ActionTypes.LOAD_TRACK:
-          KeyStore.newBinds(payload.track.notes)
+          BindStore.newBinds(payload.track.notes)
           break;
       }
     })

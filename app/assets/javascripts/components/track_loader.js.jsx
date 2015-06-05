@@ -3,21 +3,21 @@ var TrackLoader = React.createClass({
 
   getInitialState: function(){
     return{
-      trackList: TrackStore.getList(),
+      trackList: TrackListStore.getList(),
       selectedTrack: 3,
-      trackName: 'Track01'
+      trackName: TrackStore.currentTrack().name
     }
   },
 
   componentDidMount: function(){
-    TrackStore.addListChangeListener(this.updateList);
-    TrackStore.addTrackChangeListener(this.updateTrack);
+    TrackListStore.addChangeListener(this.updateList);
+    TrackStore.addChangeListener(this.updateTrack);
     ApiActions.getTracks();
   },
 
   updateList: function(){
     this.setState({
-      trackList: TrackStore.getList()
+      trackList: TrackListStore.getList()
     })
   },
 

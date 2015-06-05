@@ -1,6 +1,6 @@
 class Track < ActiveRecord::Base
-  attr_accessor :play_hash, :stop_hash, :notes
-  
+  # validates :play_hash, :stop_hash, :notes, presence: true
+
   def as_json(options = {})
     {
       play_hash: self[:play_hash],

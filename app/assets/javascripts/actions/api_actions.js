@@ -13,9 +13,11 @@ ApiActions = {
   },
 
   saveTrack: function(track){
+    console.log('/api/tracks'+(!!track.id ? "/"+track.id : ''))
+    console.log(track.id)
     $.ajax(
-      {url:'/api/tracks',
-      type: 'POST',
+      {url:'/api/tracks'+(!!track.id ? "/"+track.id : ''),
+      type: (!!track.id ? "PATCH" : "POST"),
       data: {track: track},
       success: function(resp){
         AppDispatcher.dispatch({
