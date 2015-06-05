@@ -10,7 +10,7 @@ class Api::TracksController < ApplicationController
     @track[:stop_hash] = params[:track][:stop_hash]
     @track[:notes] = params[:track][:notes]
     if @track.save!
-      @track_list = Track.all.select("id, name")
+      @track_list = Track.all
       render json: @track_list
     else
       render json: {errors: @track.errors.full_messages}

@@ -25,7 +25,7 @@
 
     newBind: function(bind){
       bind.freq = parseInt(bind.freq);
-      _currentTrack.newBind(bind)
+      _currentTrack.newBind(bind);
       TrackStore.emit(TRACK_CHANGE_EVENT);
     },
 

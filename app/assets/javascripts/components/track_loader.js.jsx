@@ -5,18 +5,24 @@ var TrackLoader = React.createClass({
     return{
       trackList: TrackStore.getList(),
       selectedTrack: 3,
-      trackName: 'Input'
+      trackName: 'Track01'
     }
   },
 
   componentDidMount: function(){
     TrackStore.addListChangeListener(this.updateList);
+    TrackStore.addTrackChangeListener(this.updateTrack);
     ApiActions.getTracks();
   },
 
   updateList: function(){
     this.setState({
-      trackList: TrackStore.getList(),
+      trackList: TrackStore.getList()
+    })
+  },
+
+  updateTrack: function(){
+    this.setState({
       trackName: TrackStore.currentTrack().name
     })
   },
@@ -47,6 +53,7 @@ var TrackLoader = React.createClass({
             <SaveTrack name={this.state.trackName}/>
             <LoadTrack id={this.state.selectedTrack}/>
           </div>
+          <div id="loader-circle-inner"/>
         </div>
       </div>
     )

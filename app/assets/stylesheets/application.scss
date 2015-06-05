@@ -117,10 +117,11 @@
   top: 20px;
   left: 25px;
   border-radius: 3px;
+  box-shadow: 0 0 0 1px #888;
 }
 
 #loader-screen-wrapper:before{
-  box-shadow: 0 0 5px 5 #111 inset;
+
 }
 
 #loader-screen{
@@ -138,6 +139,7 @@
 }
 
 #loader-circle-outer{
+  background-color: #DDD;
   margin: 0;
   width: 130px;
   height: 130px;
@@ -145,7 +147,19 @@
   top: 40px;
   left: 30px;
   border-radius: 65px;
-  box-shadow: 0 0 4px 2px #333 inset;
+  box-shadow: 0 0 5px 2px #333 inset;
+}
+
+#loader-circle-inner{
+  background-color: #CCC;
+  margin: 0;
+  width: 40px;
+  height: 40px;
+  position: relative;
+  top: 25px;
+  left: 45px;
+  border-radius: 20px;
+  box-shadow: 0 0 5px 2px #333;
 }
 
 #loader-buttons{

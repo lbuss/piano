@@ -2,7 +2,6 @@
   root.Track = function(boundKeys, loadTrack){
 
     this.attr = {
-      name: 'track01',
       time: 0,
       timeStep: 5,
       interval: null,
@@ -18,10 +17,10 @@
       this.attr.notes = loadTrack.notes;
       this.name = loadTrack.name;
     }else{
-      this.trackName = 'New Track';
       Object.keys(boundKeys).forEach(function(key){
         this.attr.notes[key] = boundKeys[key];
       }.bind(this));
+      this.name = 'Track01';
     }
   }
 
@@ -67,7 +66,7 @@
     },
 
     newBind: function(bind){
-      this.attr.notes[KeyCodes[bind.key]] = new Note(bind.freq);
+      this.attr.notes[KeyCodes[bind.key]] = bind.freq;
     },
 
     reset: function(){
