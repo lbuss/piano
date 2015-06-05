@@ -1,24 +1,15 @@
 var Organ = React.createClass({
-  getInitialState: function(){
-    return{
-      keysBound: BindStore.keyBindings()
-    }
-  },
-
-  componentDidMount: function(){
-    BindStore.addChangeListener(this.updateBoundKeys);
-  },
 
   render: function() {
-    var keyList = Object.keys(this.state.keysBound).sort(this.sortByFreq).map(function(key){
-      var note = new Note(this.state.keysBound[key]);
-      return <Key key={key} keyCode={key} note={note}/>
+    var keyList = Object.keys(this.props.keys).sort(this.sortByFreq).map(function(key){
+      var note = new Note(this.props.keys[key]);
+      return <OrganKey key={key} keyCode={key} note={note}/>
     }.bind(this));
 
     return(
       <div id="organ">
-        <div className="menu">
-          <TrackViewer/>
+        <div id="organ-menu-wrapper">
+          <OrganPlayer track={this.props.track}/>
           <BindForm/>
         </div>
         <ul id="key-board">
@@ -28,13 +19,7 @@ var Organ = React.createClass({
     )
   },
 
-  updateBoundKeys: function(){
-    this.setState({
-      keysBound: BindStore.keyBindings()
-    })
-  },
-
   sortByFreq: function(a, b) {
-    return (this.state.keysBound[a] > this.state.keysBound[b]);
+    return (this.props.keys[a] > this.props.keys[b]);
   }
 });

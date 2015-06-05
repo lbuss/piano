@@ -28,17 +28,15 @@
   box-shadow:0 -1px 10px 0px #999 inset, 10px 10px 10px 0px #999;
 }
 
-.menu{
-  margin-left: 30px;
-  width:280px;
-  padding:5px;
-  display: default;
-  border-radius: 5px;
-  box-shadow: 0 0px 10px 0px #111 inset;
-}
 
-.bindFormInput{
-    width: 40px;
+
+#key-board{
+  display: inline-block;
+  margin-bottom: 10px;
+  list-style-type: none;
+  padding: 0px 10px;
+  border-radius: 10px;
+  box-shadow: 0 0px 20px 2px #111 inset;
 }
 
 .piano-key{
@@ -55,15 +53,6 @@
   /*box-shadow: 0 0 3pt 2pt red;*/
 }
 
-#key-board{
-  display: inline-block;
-  margin-bottom: 10px;
-  list-style-type: none;
-  padding: 0px 10px;
-  border-radius: 10px;
-  box-shadow: 0 0px 20px 2px #111 inset;
-}
-
 .pressed{
   background-color: #FDF;
   box-shadow:0 -2px 2px 0px #111 inset, 0 5px 2px 0px #111 inset;
@@ -75,26 +64,56 @@
   box-shadow: 0 -13px 2px 0px #666 inset, 0 5px 2px 0px #111 inset;
 }
 
-#track{
-  float:left;
-  width: 120px;
+#organ-menu-wrapper{
+  position: relative;
+  margin-left: 10px;
+  width: 290px;
+  height: 20px;
+  padding: 5px;
+  display: default;
+  border-radius: 5px;
+  box-shadow: 0 0px 10px 0px #111 inset;
 }
 
-#play{
-  outline: 0;
-  background-color:#EEE;
-  border-radius:5px;
-  border: none;
-  box-shadow: 0 0 2px 0px #333 inset;
-  box-shadow: 0 0 5px 1px #111 inset;
+#organ-player-wrapper{
+  width: 55%;
+  float: left;
 }
 
-#record{
+.organ-button{
+  margin-right: 8px;
   outline: 0;
-  background-color:#EEE;
-  border-radius:5px;
+  background-color:#DDD;
+  border-radius:3px;
   border: none;
-  box-shadow: 0 0 5px 1px #111 inset;
+  box-shadow: -1px -1px 1px 0 #444 inset, 1px 1px 1px 0 #111;
+}
+
+#bind-form-wrapper{
+  position: absolute;
+  left: 54%;
+}
+
+#bind-form-key-input{
+  width: 10px;
+  margin-right: 8px;
+}
+
+#bind-form-freq-input{
+  width: 40px;
+  margin-right: 8px;
+}
+
+.bind-form-text-input{
+  text-align: center;
+  background-color: #BBB;
+  border: 0;
+  border-style: none;
+  box-shadow:0 0 2px 0px #333 inset
+}
+
+.bind-form-text-input:focus{
+  outline: none;
 }
 
 #track-loader{
@@ -181,10 +200,14 @@
   // border-radius: 3px;
   margin:0;
   border:0;
+  border-style: none;
   padding:0;
   width: 100%;
 }
 
+#loader-text-input:focus{
+  outline: none;
+}
 .selected{
   background-color: #777;
 }

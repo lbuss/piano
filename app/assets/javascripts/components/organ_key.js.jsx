@@ -1,4 +1,4 @@
-var Key = React.createClass({
+var OrganKey = React.createClass({
 
   getInitialState: function(){
     return {playing: false};

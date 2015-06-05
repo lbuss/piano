@@ -19,5 +19,11 @@ Actions = {
         actionType: ActionTypes.NEW_BIND,
         bind: bind
       });
+    },
+
+    newTrack: function(){
+      AppDispatcher.dispatch({
+        actionType: ActionTypes.NEW_TRACK,
+      });
     }
 };

@@ -6,8 +6,10 @@
       timeStep: 5,
       interval: null,
       recording: false,
+      //hashes are {time: [key1, key2...],}
       playHash: {},
       stopHash: {},
+      //notes is {key: freq}
       notes: {}
     }
 
@@ -76,6 +78,11 @@
       this.attr.interval = null;
       this.attr.recording = false;
       this.attr.time = 0;
+
+      //stop trailing notes
+      Object.keys(this.attr.notes).forEach(function(key){
+        Actions.keyUp(key);
+      })
     },
 
     step: function(){

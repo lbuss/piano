@@ -1,4 +1,4 @@
-var LoadTrack = React.createClass({
+var LoaderLoad = React.createClass({
 
   render: function() {
     return <button onClick={this.loadTrack}>Load</button>

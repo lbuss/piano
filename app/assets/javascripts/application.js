@@ -16,6 +16,7 @@
 //= require react
 //= require react_ujs
 //= require utils
+//= require jQueryKnob
 //= require components
 //= require flux
 //= require eventemitter

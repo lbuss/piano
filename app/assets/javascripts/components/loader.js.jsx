@@ -1,34 +1,20 @@
-var TrackLoader = React.createClass({
+var Loader = React.createClass({
   mixins:[React.addons.LinkedStateMixin],
 
   getInitialState: function(){
     return{
-      trackList: TrackListStore.getList(),
       selectedTrack: 3,
       trackName: TrackStore.currentTrack().name
     }
   },
 
-  componentDidMount: function(){
-    TrackListStore.addChangeListener(this.updateList);
+  componentDidMount:function(){
     TrackStore.addChangeListener(this.updateTrack);
-    ApiActions.getTracks();
-  },
-
-  updateList: function(){
-    this.setState({
-      trackList: TrackListStore.getList()
-    })
-  },
-
-  updateTrack: function(){
-    this.setState({
-      trackName: TrackStore.currentTrack().name
-    })
   },
 
   render: function() {
-    var trackList = this.state.trackList.map(function(track){
+    // TODO: Make the dial a jquery knob
+    var trackList = this.props.tracks.map(function(track){
       var selected = (this.state.selectedTrack === track.id ? "selected" : "");
       return(
         <li className={"loader-menu-item " + selected}
@@ -43,15 +29,21 @@ var TrackLoader = React.createClass({
     return(
       <div id="track-loader">
         <div id="loader-screen-wrapper">
-          <input id="loader-text-input" className="loader-menu-item" type="text" valueLink={this.linkState('trackName')}/>
+          <input id="loader-text-input"
+            className="loader-menu-item"
+            type="text"
+            maxLength="15"
+            valueLink={this.linkState('trackName')}
+          />
+
           <ul id="loader-screen">
             {trackList}
           </ul>
         </div>
         <div id="loader-circle-outer">
           <div id="loader-buttons">
-            <SaveTrack name={this.state.trackName}/>
-            <LoadTrack id={this.state.selectedTrack}/>
+            <LoaderSave name={this.state.trackName}/>
+            <LoaderLoad id={this.state.selectedTrack}/>
           </div>
           <div id="loader-circle-inner"/>
         </div>
@@ -60,9 +52,16 @@ var TrackLoader = React.createClass({
   },
 
   selectMenuItem: function(e){
+    // TODO: Make this an action
     e.preventDefault();
     this.setState({
       selectedTrack: $(e.target).data("id")
+    })
+  },
+
+  updateTrack: function(){
+    this.setState({
+      trackName: TrackStore.currentTrack().name
     })
   }
 });

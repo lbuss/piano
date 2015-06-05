@@ -10,6 +10,12 @@
       TrackListStore.emit(CHANGE_EVENT);
     },
 
+    getIDs: function(){
+      return _trackList.map(function(track){
+        return track.id;
+      })
+    },
+
     getList: function(){
       return _trackList;
     },

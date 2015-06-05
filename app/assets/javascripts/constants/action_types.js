@@ -3,5 +3,6 @@ ActionTypes = {
   KEY_UP: 'key_up',
   NEW_BIND: 'new_bind',
   LOAD_TRACK: 'load_track',
-  LIST_UPDATE: 'list_update'
+  LIST_UPDATE: 'list_update',
+  NEW_TRACK: 'new_track'
 }

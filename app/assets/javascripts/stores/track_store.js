@@ -5,24 +5,26 @@
   var CHANGE_EVENT = 'track_change';
 
   root.TrackStore = $.extend({}, EventEmitter.prototype, {
+    newTrack: function(){
+      _currentTrack = new Track(BindStore.keyBindings());
+      TrackStore.emit(CHANGE_EVENT);
+    },
+
     currentTrack: function(){
       return _currentTrack;
     },
 
     keyDown: function(key){
       _currentTrack.keyDown(key);
-      TrackStore.emit(CHANGE_EVENT);
     },
 
     keyUp: function(key){
       _currentTrack.keyUp(key);
-      TrackStore.emit(CHANGE_EVENT);
     },
 
     newBind: function(bind){
       bind.freq = parseInt(bind.freq);
       _currentTrack.newBind(bind);
-      TrackStore.emit(CHANGE_EVENT);
     },
 
     loadTrack: function(track){
@@ -51,6 +53,9 @@
           break;
         case ActionTypes.LOAD_TRACK:
           TrackStore.loadTrack(payload.track);
+          break;
+        case ActionTypes.NEW_TRACK:
+          TrackStore.newTrack();
           break;
       }
     })

@@ -10,10 +10,21 @@ var BindForm = React.createClass({
 
   render: function() {
     return(
-      <form onSubmit={this.submitBind}>
-        <input type="text" className="bindFormInput" valueLink={this.linkState('freq')}/>
-        <input type="text" className="bindFormInput" valueLink={this.linkState('key')}/>
-        <input type="submit" value="Bind Key"/>
+      <form id="bind-form-wrapper" onSubmit={this.submitBind}>
+        <input type="text"
+          id="bind-form-freq-input"
+          className="bind-form-text-input"
+          maxLength="5"
+          valueLink={this.linkState('freq')}
+        />
+        <input
+          type="text"
+          id="bind-form-key-input"
+          className="bind-form-text-input"
+          maxLength="1"
+          valueLink={this.linkState('key')}
+        />
+        <input type="submit" className="organ-button" value="Bind Key"/>
       </form>
     )
   },

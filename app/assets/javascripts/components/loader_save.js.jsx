@@ -1,4 +1,4 @@
-var SaveTrack = React.createClass({
+var LoaderSave = React.createClass({
   render: function() {
     return <button onClick={this.saveTrack}>Save</button>;
   },
