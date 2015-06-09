@@ -1,0 +1,234 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+
+
+ */
+/* line 18, /Users/Johanna/Documents/LawStuff/piano/piano/app/assets/stylesheets/application.scss */
+#main {
+  display: inline-block;
+}
+
+/* line 22, /Users/Johanna/Documents/LawStuff/piano/piano/app/assets/stylesheets/application.scss */
+#organ {
+  padding: 10px;
+  margin-right: 50px;
+  float: left;
+  vertical-align: top;
+  background-color: #333;
+  border-radius: 5px;
+  box-shadow: 0 -1px 10px 0px #999 inset, 10px 10px 10px 0px #999;
+}
+
+/* line 34, /Users/Johanna/Documents/LawStuff/piano/piano/app/assets/stylesheets/application.scss */
+#key-board {
+  display: inline-block;
+  margin-bottom: 10px;
+  list-style-type: none;
+  padding: 0px 10px;
+  border-radius: 10px;
+  box-shadow: 0 0px 20px 2px #111 inset;
+}
+
+/* line 43, /Users/Johanna/Documents/LawStuff/piano/piano/app/assets/stylesheets/application.scss */
+.piano-key {
+  padding: 0px;
+  margin: 5px;
+  height: 130px;
+  width: 45px;
+  text-align: center;
+  float: left;
+  /*outline-style: solid;
+  outline-width: 1px;
+  outline-color: black;*/
+  border-radius: 5px;
+  /*box-shadow: 0 0 3pt 2pt red;*/
+}
+
+/* line 57, /Users/Johanna/Documents/LawStuff/piano/piano/app/assets/stylesheets/application.scss */
+.pressed-key {
+  background-color: #FDF;
+  box-shadow: 0 -2px 2px 0px #111 inset, 0 5px 2px 0px #111 inset;
+  /*0 -5px 10px 1px yellow inset, */
+}
+
+/* line 63, /Users/Johanna/Documents/LawStuff/piano/piano/app/assets/stylesheets/application.scss */
+.unpressed-key {
+  background-color: #EEEEEE;
+  box-shadow: 0 -13px 2px 0px #666 inset, 0 5px 2px 0px #111 inset;
+}
+
+/* line 68, /Users/Johanna/Documents/LawStuff/piano/piano/app/assets/stylesheets/application.scss */
+#organ-menu-wrapper {
+  position: relative;
+  margin-left: 10px;
+  width: 290px;
+  height: 20px;
+  padding: 5px;
+  display: default;
+  border-radius: 5px;
+  box-shadow: 0 0px 10px 0px #111 inset;
+}
+
+/* line 79, /Users/Johanna/Documents/LawStuff/piano/piano/app/assets/stylesheets/application.scss */
+#organ-player-wrapper {
+  width: 55%;
+  float: left;
+}
+
+/* line 84, /Users/Johanna/Documents/LawStuff/piano/piano/app/assets/stylesheets/application.scss */
+.organ-button {
+  margin-right: 8px;
+  outline: 0;
+  background-color: #DDD;
+  border-radius: 3px;
+  border: none;
+  box-shadow: -1px -1px 1px 0 #444 inset, 1px 1px 1px 0 #111;
+}
+
+/* line 93, /Users/Johanna/Documents/LawStuff/piano/piano/app/assets/stylesheets/application.scss */
+.pressed-button {
+  background-color: #D7D;
+}
+
+/* line 97, /Users/Johanna/Documents/LawStuff/piano/piano/app/assets/stylesheets/application.scss */
+#bind-form-wrapper {
+  position: absolute;
+  left: 54%;
+}
+
+/* line 102, /Users/Johanna/Documents/LawStuff/piano/piano/app/assets/stylesheets/application.scss */
+#bind-form-key-input {
+  width: 10px;
+  margin-right: 8px;
+}
+
+/* line 107, /Users/Johanna/Documents/LawStuff/piano/piano/app/assets/stylesheets/application.scss */
+#bind-form-freq-input {
+  width: 40px;
+  margin-right: 8px;
+}
+
+/* line 112, /Users/Johanna/Documents/LawStuff/piano/piano/app/assets/stylesheets/application.scss */
+.bind-form-text-input {
+  text-align: center;
+  background-color: #BBB;
+  border: 0;
+  border-style: none;
+  box-shadow: 0 0 2px 0px #333 inset;
+}
+
+/* line 120, /Users/Johanna/Documents/LawStuff/piano/piano/app/assets/stylesheets/application.scss */
+.bind-form-text-input:focus {
+  outline: none;
+}
+
+/* line 124, /Users/Johanna/Documents/LawStuff/piano/piano/app/assets/stylesheets/application.scss */
+#track-loader {
+  float: left;
+  height: 300px;
+  width: 190px;
+  background-color: #CCC;
+  box-shadow: -3px -8px 10px 10px #555 inset, 10px 10px 10px 0px #999;
+  border-radius: 15px;
+}
+
+/* line 133, /Users/Johanna/Documents/LawStuff/piano/piano/app/assets/stylesheets/application.scss */
+#loader-screen-wrapper {
+  overflow: hidden;
+  width: 140px;
+  height: 100px;
+  margin: 0;
+  position: relative;
+  padding: 0;
+  top: 20px;
+  left: 25px;
+  border-radius: 3px;
+  box-shadow: 0 0 0 1px #888;
+}
+
+/* line 151, /Users/Johanna/Documents/LawStuff/piano/piano/app/assets/stylesheets/application.scss */
+#loader-screen {
+  position: relative;
+  top: -2px;
+  background-color: #999;
+  width: 100%;
+  height: 87px;
+  list-style-type: none;
+  text-align: left;
+  padding: 0;
+  margin: 0;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+/* line 165, /Users/Johanna/Documents/LawStuff/piano/piano/app/assets/stylesheets/application.scss */
+#loader-circle-outer {
+  background-color: #DDD;
+  margin: 0;
+  width: 130px;
+  height: 130px;
+  position: relative;
+  top: 40px;
+  left: 30px;
+  border-radius: 65px;
+  box-shadow: 0 0 5px 2px #333 inset;
+}
+
+/* line 177, /Users/Johanna/Documents/LawStuff/piano/piano/app/assets/stylesheets/application.scss */
+#loader-circle-inner {
+  background-color: #CCC;
+  margin: 0;
+  width: 40px;
+  height: 40px;
+  position: relative;
+  top: 25px;
+  left: 45px;
+  border-radius: 20px;
+  box-shadow: 0 0 5px 2px #333;
+}
+
+/* line 189, /Users/Johanna/Documents/LawStuff/piano/piano/app/assets/stylesheets/application.scss */
+#loader-buttons {
+  position: relative;
+  top: 20px;
+  left: 20px;
+}
+
+/* line 195, /Users/Johanna/Documents/LawStuff/piano/piano/app/assets/stylesheets/application.scss */
+.loader-menu-item {
+  cursor: pointer;
+  padding: 0 5px;
+}
+
+/* line 200, /Users/Johanna/Documents/LawStuff/piano/piano/app/assets/stylesheets/application.scss */
+#loader-text-input {
+  position: relative;
+  top: -3px;
+  height: 18px;
+  background-color: #999;
+  margin: 0;
+  border: 0;
+  border-style: none;
+  padding: 0;
+  width: 100%;
+}
+
+/* line 213, /Users/Johanna/Documents/LawStuff/piano/piano/app/assets/stylesheets/application.scss */
+#loader-text-input:focus {
+  outline: none;
+}
+
+/* line 216, /Users/Johanna/Documents/LawStuff/piano/piano/app/assets/stylesheets/application.scss */
+.selected {
+  background-color: #777;
+}
