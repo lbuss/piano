@@ -7,15 +7,18 @@ var OrganPlayer = React.createClass({
   },
 
   render: function(){
+    var PlayPressed = (this.state.playing ? 'pressed-button' : '');
+    var RecordPressed = (this.state.recording ? 'pressed-button' : '');
+
     return (
       <div id="organ-player-wrapper">
         <button id="new" className="organ-button" onClick={this.newTrack}>
           New
         </button>
-        <button id="play" className="organ-button" onClick={this.togglePlay}>
+        <button id="play" className={PlayPressed + " organ-button"} onClick={this.togglePlay}>
            {this.state.playing? 'Stop' : 'Play'}
         </button>
-        <button id="record" className="organ-button" onClick={this.toggleRecord}>
+        <button id="record" className={RecordPressed + " organ-button"} onClick={this.toggleRecord}>
            {this.state.recording? 'Stop' : 'Record'}
         </button>
       </div>

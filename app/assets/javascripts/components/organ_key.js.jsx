@@ -9,10 +9,10 @@ var OrganKey = React.createClass({
   },
 
   render: function() {
-    var pressClass = (this.state.playing ? 'pressed' : 'unpressed');
+    var pressClass = (this.state.playing ? 'pressed-key' : 'unpressed-key');
 
     return(
-      <li className={pressClass+" piano-key"}>
+      <li onMouseUp={this.releaseKey} onMouseDown={this.playKey} className={pressClass+" piano-key"}>
         {KeyLetters[this.props.keyCode]}
         :<br/>
         {this.props.note.frequency}
@@ -29,5 +29,13 @@ var OrganKey = React.createClass({
         this.props.note.stop();
         this.setState({playing:false});
       }
-  }
+  },
+
+  playKey: function(){
+    Actions.keyDown(this.props.keyCode);
+  },
+
+  releaseKey: function(){
+    Actions.keyUp(this.props.keyCode);
+  },
 });

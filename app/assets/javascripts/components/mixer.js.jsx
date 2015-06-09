@@ -12,6 +12,8 @@ var Mixer = React.createClass({
 		// }.bind(this))
 
     return (
+      // var effects = [AudioContextEffects]
+
       <div/>
     )
   }

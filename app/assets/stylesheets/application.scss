@@ -53,13 +53,13 @@
   /*box-shadow: 0 0 3pt 2pt red;*/
 }
 
-.pressed{
+.pressed-key{
   background-color: #FDF;
   box-shadow:0 -2px 2px 0px #111 inset, 0 5px 2px 0px #111 inset;
 /*0 -5px 10px 1px yellow inset, */
 }
 
-.unpressed{
+.unpressed-key{
   background-color: #EEEEEE;
   box-shadow: 0 -13px 2px 0px #666 inset, 0 5px 2px 0px #111 inset;
 }
@@ -87,6 +87,10 @@
   border-radius:3px;
   border: none;
   box-shadow: -1px -1px 1px 0 #444 inset, 1px 1px 1px 0 #111;
+}
+
+.pressed-button{
+  background-color: #D7D;
 }
 
 #bind-form-wrapper{
